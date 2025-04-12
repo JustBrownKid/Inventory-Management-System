@@ -1,0 +1,26 @@
+1. Users Table:
+      id, name, email, password, role, timestamps
+
+2. Categories Table: 
+     id, name, description, timestamps
+
+3. Products Table:
+      id, name, sku, category_id (FK), price, quantity, description, timestamps d
+
+4. Suppliers Table:
+      id, name, phone, email, address, timestamps
+
+5. Customers Table:
+      id, name, phone, email, address, timestamps
+
+6. Purchases Table: 
+     id, supplier_id (FK), purchase_date, total_amount, note, timestamps d
+
+7. Purchase Items Table: 
+     id, purchase_id (FK), product_id (FK), quantity, unit_price, timestamps d
+
+8. Sales Table: 
+     id, customer_id (FK), sale_date, total_amount, note, timestamps s
+
+9. Sales Items Table:
+      id, sale_id (FK), product_id (FK), quantity, unit_price, timestamps
