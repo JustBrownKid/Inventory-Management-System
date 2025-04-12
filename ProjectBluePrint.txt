@@ -24,3 +24,7 @@
 
 9. Sales Items Table:
       id, sale_id (FK), product_id (FK), quantity, unit_price, timestamps
+
+Auth 
+      amin only register User
+      
