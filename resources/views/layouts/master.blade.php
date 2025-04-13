@@ -4,7 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tailwind Sidebar Layout</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script><!DOCTYPE html>
+
+
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Alpine.js CDN for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+</head>
 </head>
 <body class="bg-gray-100">
 
@@ -23,8 +31,8 @@
     <div id="sidebar" class="bg-gray-900 text-white w-64 space-y-6 py-7 px-4 absolute md:relative inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition duration-300 ease-in-out z-40">
       <div class="text-2xl font-bold">MyApp</div>
       <nav class="mt-10">
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Dashboard</a>
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Profile</a>
+        <a href="/dashboard" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Product Creat</a>
+        <a href="/product/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Prodcut List</a>
         <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Settings</a>
         <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Logout</a>
       </nav>
