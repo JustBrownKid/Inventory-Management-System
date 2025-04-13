@@ -8,7 +8,20 @@
     <div id="toast" class="fixed top-5 right-5 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg shadow-lg transform transition-all opacity-100">
         <span class="font-medium">Success!</span> {{ session('success') }}
     </div>
+
+    <script>
+        setTimeout(() => {
+            const toast = document.getElementById('toast');
+            if (toast) {
+                toast.classList.add('opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500); 
+            }
+        }, 5000); 
+    </script>
 @endif
+
 
 <div class="container mx-auto p-6">
     <h2 class="text-2xl font-bold mb-4">Product List</h2>
@@ -33,6 +46,7 @@
                 <th class="p-3 text-left">Price</th>
                 <th class="p-3 text-left">Quantity</th>
                 <th class="p-3 text-left">Description</th>
+                <th class="p-3 text-left">Action</th>
             </tr>
         </thead>
         <tbody id="product-table-body">
@@ -54,53 +68,68 @@
     const searchInput = document.getElementById("search");
     const filterSelect = document.getElementById("filter");
 
-    function renderTable(filteredData) {
-        productTableBody.innerHTML = ''; 
-        filteredData.forEach(product => {
-            const row = document.createElement("tr");
-            row.classList.add("border-b");
+        function renderTable(filteredData) {
+    productTableBody.innerHTML = ''; 
+    filteredData.forEach(product => {
+        const row = document.createElement("tr");
+        row.classList.add("border-b");
 
-            const category = categories.find(cat => cat.id == product.category_id);
-            const categoryName = category ? category.name : 'Unknown';
-            const categoryColor = categoryColors[product.category_id] || 'bg-gray-200'; 
+        const category = categories.find(cat => cat.id == product.category_id);
+        const categoryName = category ? category.name : 'Unknown';
+        const categoryColor = categoryColors[product.category_id] || 'bg-gray-200'; 
 
-            row.innerHTML = `
-                <td class="p-3">${product.name}</td>
-                <td class="p-3">${product.sku}</td>
-                <td class="p-3 ${categoryColor}">${categoryName}</td>
-                <td class="p-3">${product.price}</td>
-                <td class="p-3">${product.quantity}</td>
-                <td class="p-3">${product.description}</td>
-            `;
-            productTableBody.appendChild(row);
-        });
-    }
+        row.innerHTML = `
+            <td class="p-3">${product.name}</td>
+            <td class="p-3">${product.sku}</td>
+            <td class="p-3 ${categoryColor}">${categoryName}</td>
+            <td class="p-3">${product.price}</td>
+            <td class="p-3">${product.quantity}</td>
+            <td class="p-3">${product.description}</td>
+            <td class="p-3">
+                <a href="/products/${product.id}/edit" 
+                   class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded mr-2 text-sm">
+                   Edit
+                </a>
+              <form action="/product/${product.id}/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');" class="inline-block">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded text-sm">
+        Delete
+    </button>
+</form>
 
-    function filterData() {
-        let filteredData = [...products];
 
-      
-        const selectedCategory = filterSelect.value;
-        if (selectedCategory) {
-            filteredData = filteredData.filter(product => product.category_id == selectedCategory);
+            </td>
+        `;
+        productTableBody.appendChild(row);
+    });
+}
+
+        function filterData() {
+            let filteredData = [...products];
+
+        
+            const selectedCategory = filterSelect.value;
+            if (selectedCategory) {
+                filteredData = filteredData.filter(product => product.category_id == selectedCategory);
+            }
+
+        
+            const searchQuery = searchInput.value.toLowerCase();
+            if (searchQuery) {
+                filteredData = filteredData.filter(product =>
+                    product.name.toLowerCase().includes(searchQuery) ||
+                    product.sku.toLowerCase().includes(searchQuery) ||
+                    product.description.toLowerCase().includes(searchQuery)
+                );
+            }
+
+            renderTable(filteredData);
         }
 
-    
-        const searchQuery = searchInput.value.toLowerCase();
-        if (searchQuery) {
-            filteredData = filteredData.filter(product =>
-                product.name.toLowerCase().includes(searchQuery) ||
-                product.sku.toLowerCase().includes(searchQuery) ||
-                product.description.toLowerCase().includes(searchQuery)
-            );
-        }
+        renderTable(products);
 
-        renderTable(filteredData);
-    }
-
-    renderTable(products);
-
-    searchInput.addEventListener("input", filterData);
-    filterSelect.addEventListener("change", filterData);
-</script>
+        searchInput.addEventListener("input", filterData);
+        filterSelect.addEventListener("change", filterData);
+    </script>
 @endsection

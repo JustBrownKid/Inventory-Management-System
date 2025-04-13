@@ -5,11 +5,22 @@
 
 @section('content')
 
-
 @if (session('success'))
     <div id="toast" class="fixed top-5 right-5 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg shadow-lg transform transition-all opacity-100">
         <span class="font-medium">Success!</span> {{ session('success') }}
     </div>
+
+    <script>
+        setTimeout(() => {
+            const toast = document.getElementById('toast');
+            if (toast) {
+                toast.classList.add('opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500); 
+            }
+        }, 5000); 
+    </script>
 @endif
 
 
@@ -72,17 +83,4 @@
     </div>
 </form>
 
-
-<script>
-    if (document.getElementById('toast')) {
-        setTimeout(function() {
-            // Add classes to fade out and move the toast up
-            document.getElementById('toast').classList.replace('opacity-100', 'opacity-0');
-            document.getElementById('toast').classList.replace('top-5', '-top-20'); // Move it above the screen for hiding
-            setTimeout(function() {
-                document.getElementById('toast').style.display = 'none'; // Hide the toast completely
-            }, 500); // Delay of the fade-out animation
-        }, 5000); // 5000 milliseconds = 5 seconds
-    }
-</script>
 @endsection
