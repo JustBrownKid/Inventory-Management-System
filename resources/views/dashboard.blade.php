@@ -22,8 +22,11 @@
         }, 5000); 
     </script>
 @endif
+<div class="w-full bg-slate-500 p-3 text-white text-center ">
+    <h1 class="text-2xl font-bold tracking-wide">Creat Product Selection</h1>
+</div>
 
-
+<div class="container mx-auto p-6">
 <form action="{{ route('products.store') }}" method="POST" class="space-y-4">
     @csrf
     <div>
@@ -55,7 +58,7 @@
         @enderror
     </div>
     <div>
-        <label class="block font-semibold text-gray-700">Price</label>
+        <label class="block font-semibold  text-gray-700">Price</label>
         <input type="text" name="price" value="{{ old('price') }}" class="w-full border border-gray-300 rounded px-3 py-2">
         @error('price')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -82,5 +85,5 @@
         </button>
     </div>
 </form>
-
+</div>
 @endsection

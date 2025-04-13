@@ -38,7 +38,7 @@
       </nav>
     </div>
 
-    <div class="flex-1 p-3 overflow-auto">
+    <div class="flex-1  overflow-auto">
       @yield('content')
     </div>
   </div>

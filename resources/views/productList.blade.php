@@ -21,7 +21,9 @@
         }, 5000); 
     </script>
 @endif
-
+<div class="w-full bg-slate-500 p-3 text-white text-center ">
+    <h1 class="text-2xl font-bold tracking-wide"> Product List</h1>
+</div>
 
 <div class="container mx-auto p-6">
     <h2 class="text-2xl font-bold mb-4">Product List</h2>
