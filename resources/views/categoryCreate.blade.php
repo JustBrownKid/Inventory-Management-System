@@ -121,10 +121,11 @@
         <td class="p-2 border border-gray-300">${createdAt}</td>
         <td class="p-2 border border-gray-300">${updatedAt}</td>
         <td class="p-2 border border-gray-300">
-          <a href="/categories/${category.id}/edit" 
-             class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded mr-2 text-sm">
-             Edit
-          </a>
+          <a href="/category/${category.id}/edit" 
+   class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded mr-2 text-sm">
+   Edit
+</a>
+
           <form action="/categories/${category.id}/delete" method="POST" 
                 onsubmit="return confirm('Are you sure you want to delete this category?');" 
                 class="inline-block">

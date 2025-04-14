@@ -35,8 +35,12 @@ Route::get('/product/list', [ProductController::class, 'list'])
 ->name('products.list');
 
 
-Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])
+Route::get('/category', [CategoryController::class, 'index'])
+->name('category');
+Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])
 ->name('category.edit');
+Route::put('/category/{id}', [CategoryController::class, 'update'])
+->name('category.update');
 Route::post('/category/store', [CategoryController::class, 'store'])
 ->name('category.store');
 Route::delete('/categories/{id}/delete', [CategoryController::class, 'destroy'])

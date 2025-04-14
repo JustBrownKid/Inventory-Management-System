@@ -33,7 +33,7 @@
       <nav class="mt-10">
         <a href="/dashboard" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Product Creat</a>
         <a href="/product/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Prodcut List</a>
-        <a href="/category/create" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Category Selection</a>
+        <a href="/category" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Category Selection</a>
         <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Logout</a>
       </nav>
     </div>
