@@ -13,8 +13,8 @@ return new class extends Migration
 
     public function up(): void
     {
-        if (!Schema::hasTable('purchase_items')) {
-            Schema::create('purchase_items', function (Blueprint $table) {
+        if (!Schema::hasTable('purchase_items	')) {
+            Schema::create('purchase_items	', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('purchase_id')->constrained('purchases')->onDelete('cascade');
                 $table->foreignId('product_id')->constrained('products')->onDelete('cascade');

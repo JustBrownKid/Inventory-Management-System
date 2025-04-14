@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SupplierController;
 
 
@@ -75,6 +76,21 @@ Route::post('/supplier/store', [SupplierController::class, 'store'])
 ->name('supplier.store');
 Route::delete('/supplier/{id}/delete', [SupplierController::class, 'destroy'])
 ->name('supplier.delete');
+
+
+Route::get('/purchases', [PurchaseController::class, 'index'])
+->name('purchases');
+Route::get('/purchases/list', [PurchaseController::class, 'list'])
+->name('purchases.list');
+Route::get('/purchases/{id}/edit', [PurchaseController::class, 'edit'])
+->name('purchases.edit');
+Route::put('/purchases/{id}', [PurchaseController::class, 'update'])
+->name('purchases.update');
+Route::post('/purchases/store', [PurchaseController::class, 'store'])
+->name('purchases.store');
+Route::delete('/purchases/{id}/delete', [PurchaseController::class, 'destroy'])
+->name('purchases.delete');
+
 
 
 

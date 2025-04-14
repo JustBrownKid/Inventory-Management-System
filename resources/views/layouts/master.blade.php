@@ -38,6 +38,9 @@
         <a href="/supplier" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Supplier Create</a>
         <a href="/supplier/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Supplier List</a>
         <hr>
+        <a href="/purchases" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Purchases Create</a>
+        <a href="/purchases/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Purchases List</a>
+        <hr>
         <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Logout</a>
       </nav>
     </div>

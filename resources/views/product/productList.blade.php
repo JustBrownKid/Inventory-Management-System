@@ -40,7 +40,7 @@
             @endforeach
         </select>
     </div>
-  <div class="max-h-[580px] overflow-y-auto">
+  <div class="max-h-[560px] overflow-y-auto">
     <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
       <thead class="bg-gray-500 text-gray-700 sticky  border-gray-300 top-0 z-100">
         <tr>

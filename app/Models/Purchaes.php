@@ -8,16 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Purchaes extends Model
 {
-    // id, supplier_id (FK), purchase_date, total_amount, note, timestamps
-    protected $fillabe = [
-         'supplier_id', 'purchase_date', 'total_amount', 'note', 'timestamps'
+    
+    protected $table = 'purchases';
+
+
+    protected $fillable = [
+        'supplier_id', 'purchase_date', 'total_amount', 'note'
     ];
-    public function suppliers()
+
+  
+    public function supplier()
     {
-        return $this->belongsTo(Supplier::class);
+        return $this->belongsTo(Supplier::class);  
     }
-    public function purchaseItems()
+
+    public function items()
     {
-        return $this->hasMany(PurchaesItem::class);
+        return $this->hasMany(PurchaesItem::class, 'purchase_id'); 
     }
 }
