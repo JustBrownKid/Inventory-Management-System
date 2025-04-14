@@ -21,12 +21,12 @@ class CategoryController extends Controller
 
     public function index(){
         $categories = Categorie::orderBy('created_at', 'desc')->get();
-        return view('categoryCreate', compact('categories'));
+        return view('category.categoryCreate', compact('categories'));
     }
 
     public function edit($id){
         $category = Categorie::find($id);
-        return view('categoryEdit', compact('category'));
+        return view('category.categoryEdit', compact('category'));
     }
     public function update(Request $request, $id){
         $validated = $request->validate([

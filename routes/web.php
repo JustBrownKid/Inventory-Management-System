@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SupplierController;
 
 
 Route::get('/', function () {
@@ -60,6 +61,21 @@ Route::post('/customer/store', [CustomerController::class, 'store'])
 ->name('customer.store');
 Route::delete('/customer/{id}/delete', [CustomerController::class, 'destroy'])
 ->name('customer.delete');
+
+
+Route::get('/supplier', [SupplierController::class, 'index'])
+->name('supplier');
+Route::get('/supplier/list', [SupplierController::class, 'list'])
+->name('supplier.list');
+Route::get('/supplier/{id}/edit', [SupplierController::class, 'edit'])
+->name('supplier.edit');
+Route::put('/supplier/{id}', [SupplierController::class, 'update'])
+->name('supplier.update');
+Route::post('/supplier/store', [SupplierController::class, 'store'])
+->name('supplier.store');
+Route::delete('/supplier/{id}/delete', [SupplierController::class, 'destroy'])
+->name('supplier.delete');
+
 
 
 

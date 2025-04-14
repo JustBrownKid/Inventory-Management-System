@@ -11,7 +11,7 @@ class ProductController extends Controller
     //
     public function index(){
         $categories = Categorie::all();
-        return view('dashboard', compact('categories'));
+        return view('product.dashboard', compact('categories'));
     }
     
     public function store(){
@@ -45,7 +45,7 @@ class ProductController extends Controller
     public function list(){
         $products = Product::orderBy('created_at', 'desc')->get();
         $categories = Categorie::all();
-        return view('productList',compact('categories','products'));
+        return view('product.productList',compact('categories','products'));
     }
 
 
@@ -53,7 +53,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $categories = Categorie::all();
         $categoryName = $categories->firstWhere('id', $product->category_id)?->name;
-        return view('productUpdate', compact('product', 'categoryName' ,'categories'));
+        return view('product.productUpdate', compact('product', 'categoryName' ,'categories'));
     }
 
 

@@ -10,7 +10,7 @@ class CustomerController extends Controller
     //
     public function index()
     {
-        return view('customerCreate');
+        return view('customer.customerCreate');
     }
 
 
@@ -38,7 +38,7 @@ class CustomerController extends Controller
   public function list()
   {
     $customers = Customer::all();
-    return view('customerList', compact('customers'));
+    return view('customer.customerList', compact('customers'));
   }
  
 
@@ -56,7 +56,7 @@ class CustomerController extends Controller
   {
     $customer = Customer::find($id);
     if ($customer) {
-        return view('customerEdit', compact('customer'));
+        return view('customer.customerEdit', compact('customer'));
     } else {
         return redirect()->route('customer.list')->with('error', 'Customer not found!');
     }

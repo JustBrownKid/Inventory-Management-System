@@ -29,9 +29,15 @@
       <nav class="mt-10">
         <a href="/dashboard" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Product Create</a>
         <a href="/product/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Product List</a>
+        <hr>
         <a href="/category" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Category Selection</a>
+        <hr>
         <a href="/customer" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Customer Create</a>
         <a href="/customer/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Customer List</a>
+        <hr>
+        <a href="/supplier" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Supplier Create</a>
+        <a href="/supplier/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Supplier List</a>
+        <hr>
         <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Logout</a>
       </nav>
     </div>
