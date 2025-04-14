@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 
 
 Route::get('/', function () {
@@ -45,6 +46,21 @@ Route::post('/category/store', [CategoryController::class, 'store'])
 ->name('category.store');
 Route::delete('/categories/{id}/delete', [CategoryController::class, 'destroy'])
 ->name('category.delete');
+
+
+Route::get('/customer', [CustomerController::class, 'index'])
+->name('customer');
+Route::get('/customer/list', [CustomerController::class, 'list'])
+->name('customer.list');
+Route::get('/customer/{id}/edit', [CustomerController::class, 'edit'])
+->name('customer.edit');
+Route::put('/customer/{id}', [CustomerController::class, 'update'])
+->name('customer.update');
+Route::post('/customer/store', [CustomerController::class, 'store'])
+->name('customer.store');
+Route::delete('/customer/{id}/delete', [CustomerController::class, 'destroy'])
+->name('customer.delete');
+
 
 
 require __DIR__.'/auth.php';

@@ -1,7 +1,7 @@
 
 @extends('layouts.master')
 
-@section('title', 'Welcome to My Application') 
+@section('title', 'Product Create') 
 
 @section('content')
 

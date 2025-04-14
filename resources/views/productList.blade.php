@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'cation') 
+@section('title', 'Product List') 
 
 @section('content')
 
@@ -54,7 +54,7 @@
         </tr>
       </thead>
       <tbody id="product-table-body" class="divide-y divide-gray-200">
-        <!-- Rows rendered here with JavaScript -->
+        
       </tbody>
     </table>
   </div>
@@ -64,10 +64,47 @@
     const products = {!! json_encode($products) !!};
     const categories = {!! json_encode($categories) !!}; 
     const categoryColors = {
-        1: 'bg-blue-200',
-        2: 'bg-green-200',
-        3: 'bg-yellow-200',
-    };
+  1: 'bg-blue-200',
+  2: 'bg-green-200',
+  3: 'bg-yellow-200',
+  4: 'bg-red-200',
+  5: 'bg-purple-200',
+  6: 'bg-pink-200',
+  7: 'bg-indigo-200',
+  8: 'bg-teal-200',
+  9: 'bg-orange-200',
+  10: 'bg-gray-200',
+  11: 'bg-blue-300',
+  12: 'bg-green-300',
+  13: 'bg-yellow-300',
+  14: 'bg-red-300',
+  15: 'bg-purple-300',
+  16: 'bg-pink-300',
+  17: 'bg-indigo-300',
+  18: 'bg-teal-300',
+  19: 'bg-orange-300',
+  20: 'bg-gray-300',
+  21: 'bg-blue-400',
+  22: 'bg-green-400',
+  23: 'bg-yellow-400',
+  24: 'bg-red-400',
+  25: 'bg-purple-400',
+  26: 'bg-pink-400',
+  27: 'bg-indigo-400',
+  28: 'bg-teal-400',
+  29: 'bg-orange-400',
+  30: 'bg-gray-400',
+  31: 'bg-blue-500',
+  32: 'bg-green-500',
+  33: 'bg-yellow-500',
+  34: 'bg-red-500',
+  35: 'bg-purple-500',
+  36: 'bg-pink-500',
+  37: 'bg-indigo-500',
+  38: 'bg-teal-500',
+  39: 'bg-orange-500',
+  40: 'bg-gray-500'
+}
 
     const productTableBody = document.getElementById("product-table-body");
     const searchInput = document.getElementById("search");

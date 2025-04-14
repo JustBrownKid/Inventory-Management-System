@@ -1,7 +1,6 @@
-
 @extends('layouts.master')
 
-@section('title', 'Welcome to My Application') 
+@section('title', ' Edit Category')  
 
 @section('content')
 
@@ -38,4 +37,4 @@
 </form>
 
 </div>
-@endsection
+@endsection  
