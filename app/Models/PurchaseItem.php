@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PurchaesItem extends Model
+class PurchaseItem extends Model
 {
     protected $table = 'purchase_items';
 
@@ -13,7 +13,7 @@ class PurchaesItem extends Model
 
     public function items()
 {
-    return $this->hasMany(PurchaesItem::class, 'purchase_id');
+    return $this->hasMany(PurchaseItem::class, 'purchase_id');
 }
 
 }

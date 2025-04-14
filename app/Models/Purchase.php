@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Models\Supplier;
-use App\Models\PurchaesItem;
+use App\Models\PurchaseItem;
 use Illuminate\Database\Eloquent\Model;
 
-class Purchaes extends Model
+class Purchase extends Model
 {
     
     protected $table = 'purchases';
@@ -24,6 +24,6 @@ class Purchaes extends Model
 
     public function items()
     {
-        return $this->hasMany(PurchaesItem::class, 'purchase_id'); 
+        return $this->hasMany(PurchaseItem::class, 'purchase_id'); 
     }
 }

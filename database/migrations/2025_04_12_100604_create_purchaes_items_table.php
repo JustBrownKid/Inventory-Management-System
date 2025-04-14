@@ -11,20 +11,17 @@ return new class extends Migration
      */
     //id, purchase_id (FK), product_id (FK), quantity, unit_price, timestamps
 
-    public function up(): void
-    {
-        if (!Schema::hasTable('purchase_items	')) {
-            Schema::create('purchase_items	', function (Blueprint $table) {
-                $table->id();
-                $table->foreignId('purchase_id')->constrained('purchases')->onDelete('cascade');
-                $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-                $table->string('quantity');
-                $table->string('unit_price');
-                $table->timestamps();
-            });
-        }
-        
-    }
+    public function up()
+{
+    Schema::create('purchase_items', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('purchase_id')->constrained()->onDelete('cascade');
+        $table->foreignId('product_id')->constrained()->onDelete('cascade');
+        $table->integer('quantity');
+        $table->decimal('unit_price', 8, 2);
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.

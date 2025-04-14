@@ -84,6 +84,8 @@ Route::get('/purchases/list', [PurchaseController::class, 'list'])
 ->name('purchases.list');
 Route::get('/purchases/{id}/edit', [PurchaseController::class, 'edit'])
 ->name('purchases.edit');
+Route::get('/purchases/{id}', [PurchaseController::class, 'update'])
+->name('purchases.show');
 Route::put('/purchases/{id}', [PurchaseController::class, 'update'])
 ->name('purchases.update');
 Route::post('/purchases/store', [PurchaseController::class, 'store'])

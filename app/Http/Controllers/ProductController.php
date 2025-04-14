@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Categorie;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     //
     public function index(){
-        $categories = Categorie::all();
+        $categories = Category::all();
         return view('product.dashboard', compact('categories'));
     }
     
@@ -44,14 +44,14 @@ class ProductController extends Controller
 
     public function list(){
         $products = Product::orderBy('created_at', 'desc')->get();
-        $categories = Categorie::all();
+        $categories = Category::all();
         return view('product.productList',compact('categories','products'));
     }
 
 
     public function edit($id){
         $product = Product::find($id);
-        $categories = Categorie::all();
+        $categories = Category::all();
         $categoryName = $categories->firstWhere('id', $product->category_id)?->name;
         return view('product.productUpdate', compact('product', 'categoryName' ,'categories'));
     }

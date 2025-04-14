@@ -29,8 +29,8 @@
         <!-- Supplier -->
         <div>
             <label for="supplier_id" class="block text-sm font-medium text-gray-700">Supplier</label>
-            <select name="supplier_id" id="supplier_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
-                <option value="">-- Select Supplier --</option>
+            <select name="supplier_id" id="supplier_id" class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                <option value="">Select Supplier</option>
                 @foreach($suppliers as $supplier)
                     <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                 @endforeach
@@ -40,7 +40,7 @@
         <!-- Purchase Date -->
         <div>
             <label for="purchase_date" class="block text-sm font-medium text-gray-700">Purchase Date</label>
-            <input type="date" name="purchase_date" id="purchase_date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+            <input type="date" name="purchase_date" id="purchase_date" class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
         </div>
 
         <!-- Note -->
@@ -72,7 +72,7 @@
 
         <!-- Total -->
         <div>
-            <strong class="text-lg">Total Amount: ₱<span id="grand-total">0.00</span></strong>
+            <strong class="text-lg">Total Amount: MMK<span id="grand-total">0</span></strong>
         </div>
 
         <!-- Submit -->
@@ -114,19 +114,19 @@
         let tr = document.createElement('tr');
         tr.innerHTML = `
             <td class="border px-4 py-2">
-                <select name="items[${itemIndex}][product_id]" class="w-full border-gray-300 rounded-md" required>
-                    <option value="">-- Select Product --</option>
+                <select name="items[${itemIndex}][product_id]" class="w-40 border-gray-300 rounded-md" required>
+                    <option value="">Select Product</option>
                     ${products.map(p => `<option value="${p.id}">${p.name}</option>`).join('')}
                 </select>
             </td>
             <td class="border px-4 py-2">
-                <input type="number" name="items[${itemIndex}][quantity]" class="w-full border-gray-300 rounded-md qty" min="1" required>
+                <input type="number" name="items[${itemIndex}][quantity]" class="w-30 h-7 border-gray-300 rounded-md qty" min="1" required>
             </td>
             <td class="border px-4 py-2">
-                <input type="number" name="items[${itemIndex}][unit_price]" class="w-full border-gray-300 rounded-md unit-price" min="0" step="0.01" required>
+                <input type="number" name="items[${itemIndex}][unit_price]" class="w-30 h-7  border-gray-300 rounded-md unit-price" min="0" step="" required>
             </td>
-            <td class="border px-4 py-2">
-                ₱<span class="line-total">0.00</span>
+            <td class="border w-full px-4 py-2">
+                MMK<span class="line-total">0</span>
             </td>
             <td class="border px-4 py-2 text-center">
                 <button type="button" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 remove-item">×</button>
