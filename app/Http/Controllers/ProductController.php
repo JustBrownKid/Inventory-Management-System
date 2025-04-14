@@ -43,7 +43,7 @@ class ProductController extends Controller
 
 
     public function list(){
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'desc')->get();
         $categories = Categorie::all();
         return view('productList',compact('categories','products'));
     }

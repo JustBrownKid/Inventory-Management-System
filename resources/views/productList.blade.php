@@ -25,36 +25,39 @@
     <h1 class="text-2xl font-bold tracking-wide"> Product List</h1>
 </div>
 
-<div class="container mx-auto p-6">
-    <h2 class="text-2xl font-bold mb-4">Product List</h2>
+<div class="container mx-auto p-4">
 
 
+  
+    <div class="overflow-x-auto">
     <div class="flex justify-between mb-4">
-        <input id="search" type="text" placeholder="Search products..." class="w-1/3 p-2 border border-gray-300 rounded-md" />
+        <input id="search" type="text" placeholder="Enter products name or SKU" class="w-1/3 p-2 border border-gray-300 rounded-md" />
         <select id="filter" class="p-2 border border-gray-300 rounded-md">
             <option value="">All Categories</option>
-            <option value="1">Category 1</option>
-            <option value="2">Category 2</option>
-            <option value="3">Category 3</option>
+            
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
         </select>
     </div>
-
+  <div class="max-h-[580px] overflow-y-auto">
     <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
-        <thead>
-            <tr class="bg-gray-100 text-gray-700">
-                <th class="p-3 text-left">Product Name</th>
-                <th class="p-3 text-left">SKU</th>
-                <th class="p-3 text-left">Category</th>
-                <th class="p-3 text-left">Price</th>
-                <th class="p-3 text-left">Quantity</th>
-                <th class="p-3 text-left">Description</th>
-                <th class="p-3 text-left">Action</th>
-            </tr>
-        </thead>
-        <tbody id="product-table-body">
-            
-        </tbody>
+      <thead class="bg-gray-500 text-gray-700 sticky  border-gray-300 top-0 z-100">
+        <tr>
+          <th class="p-2 text-left bg-gray-100 border border-gray-300 w-48">Product Name</th>
+          <th class="p-2 text-left bg-gray-100 border border-gray-300 w-32">SKU</th>
+          <th class="p-2 text-left bg-gray-100 border border-gray-300 w-40">Category</th>
+          <th class="p-2 text-left bg-gray-100 border border-gray-300 w-24">Price</th>
+          <th class="p-2 text-left bg-gray-100 border border-gray-300 w-24">Quantity</th>
+          <th class="p-2 text-left bg-gray-100 border border-gray-300 w-[200px]">Description</th>
+          <th class="p-2 text-left bg-gray-100 border border-gray-300 w-[160px]">Action</th>
+        </tr>
+      </thead>
+      <tbody id="product-table-body" class="divide-y divide-gray-200">
+        <!-- Rows rendered here with JavaScript -->
+      </tbody>
     </table>
+  </div>
 </div>
 
 <script>
@@ -81,27 +84,26 @@
         const categoryColor = categoryColors[product.category_id] || 'bg-gray-200'; 
 
         row.innerHTML = `
-            <td class="p-3">${product.name}</td>
-            <td class="p-3">${product.sku}</td>
-            <td class="p-3 ${categoryColor}">${categoryName}</td>
-            <td class="p-3">${product.price}</td>
-            <td class="p-3">${product.quantity}</td>
-            <td class="p-3">${product.description}</td>
-            <td class="p-3">
-                <a href="/products/${product.id}/edit" 
-                   class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded mr-2 text-sm">
-                   Edit
-                </a>
-              <form action="/product/${product.id}/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');" class="inline-block">
+            <td class="p-2 border border-gray-300">${product.name}</td>
+<td class="p-2 border border-gray-300">${product.sku}</td>
+<td class="p-2 border border-gray-300 ${categoryColor}">${categoryName}</td>
+<td class="p-2 border border-gray-300">${product.price}</td>
+<td class="p-2 border border-gray-300">${product.quantity}</td>
+<td class="p-2 border border-gray-300">${product.description}</td>
+<td class="p-2 border border-gray-300">
+  <a href="/products/${product.id}/edit" 
+     class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded mr-2 text-sm">
+     Edit
+  </a>
+  <form action="/product/${product.id}/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');" class="inline-block">
     @csrf
     @method('DELETE')
     <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded text-sm">
-        Delete
+      Delete
     </button>
-</form>
+  </form>
+</td>
 
-
-            </td>
         `;
         productTableBody.appendChild(row);
     });

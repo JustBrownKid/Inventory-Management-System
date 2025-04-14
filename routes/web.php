@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 Route::get('/dashboard', [ProductController::class, 'index'])
 ->middleware(['auth', 'verified'])
@@ -34,8 +35,12 @@ Route::get('/product/list', [ProductController::class, 'list'])
 ->name('products.list');
 
 
-
-
+Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])
+->name('category.edit');
+Route::post('/category/store', [CategoryController::class, 'store'])
+->name('category.store');
+Route::delete('/categories/{id}/delete', [CategoryController::class, 'destroy'])
+->name('category.delete');
 
 
 require __DIR__.'/auth.php';
