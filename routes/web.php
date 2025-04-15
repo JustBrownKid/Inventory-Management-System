@@ -9,12 +9,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\DashboardController;
 
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/graph', [DashboardController::class, 'index']);
 
 Route::get('/dashboard', [ProductController::class, 'index'])
 ->middleware(['auth', 'verified'])

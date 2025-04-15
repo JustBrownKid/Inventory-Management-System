@@ -21,12 +21,12 @@
       </svg>
     </button>
   </header>
-
-
   <div class="flex h-screen overflow-hidden">
     <div id="sidebar" class="bg-gray-900 text-white w-64 space-y-6 py-7 px-4 absolute md:relative inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition duration-300 ease-in-out z-40">
       <div class="text-2xl font-bold">MyApp</div>
       <nav class="mt-10">
+      @if(Auth::user()->role === 'superadmin')
+        <!-- Super Admin Access -->
         <a href="/dashboard" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Product Create</a>
         <a href="/product/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Product List</a>
         <hr>
@@ -44,14 +44,49 @@
         <a href="/sales/create" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Sales Create</a>
         <a href="/sales/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Sales List</a>
         <hr>
-        <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Logout</a>
+        <a href="/graph" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Graph</a>
+        <hr>  
+    @elseif(Auth::user()->role ==='admin')
+        <!-- Admin Access -->
+        <a href="/dashboard" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Product Create</a>
+        <a href="/product/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Product List</a>
+        <hr>
+        <a href="/category" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Category Selection</a>
+        <hr>
+        <a href="/customer" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Customer Create</a>
+        <a href="/customer/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Customer List</a>
+        <hr>
+        <a href="/supplier" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Supplier Create</a>
+        <a href="/supplier/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Supplier List</a>
+        <hr>
+        <a href="/purchases" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Purchases Create</a>
+        <a href="/purchases/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Purchases List</a>
+        <hr>
+        <a href="/sales/create" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Sales Create</a>
+        <a href="/sales/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Sales List</a>
+        <hr>
+    @elseif(Auth::user()->role ==='inventory')
+        <a href="/customer" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Customer Create</a>
+        <a href="/customer/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Customer List</a>
+        <hr>
+        <a href="/supplier" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Supplier Create</a>
+        <a href="/supplier/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Supplier List</a>
+        <hr>
+        <a href="/purchases" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Purchases Create</a>
+        <a href="/purchases/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Purchases List</a>
+        <hr>
+        <a href="/sales/create" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Sales Create</a>
+        <a href="/sales/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Sales List</a>
+        <hr>
+    @endif
       </nav>
     </div>
 
     <div class="flex-1 overflow-auto">
       @yield('content')
     </div>
-  <
+  </div>
+
   <script>
     const toggleButton = document.getElementById('toggleSidebar');
     const sidebar = document.getElementById('sidebar');

@@ -49,7 +49,7 @@
         <!-- Note -->
         <div>
             <label for="note" class="block text-sm font-medium text-gray-700">Note</label>
-            <textarea name="note" id="note" rows="2" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+            <textarea name="note" id="note" required rows="2" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
         </div>
 
         <!-- Products Table -->

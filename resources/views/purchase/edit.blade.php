@@ -39,7 +39,7 @@
 
     <div>
         <label for="note" class="block text-sm font-medium text-gray-700">Note</label>
-        <textarea name="note" id="note" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">{{ $purchase->note }}</textarea>
+        <textarea name="note" id="note" rows="4" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">{{ $purchase->note }}</textarea>
     </div>
 
     <div id="items">

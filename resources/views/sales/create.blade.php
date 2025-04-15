@@ -43,14 +43,14 @@
     <!-- Sale Date -->
     <div class="w-1/2">
         <label for="sale_date" class="block text-sm font-medium text-gray-700">Sale Date</label>
-        <input type="date" name="sale_date" id="sale_date" value="{{ old('sale_date', now()->toDateString()) }}" class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+        <input type="date" name="sale_date" id="sale_date" value="{{ old('sale_date') }}" class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
     </div>
 </div>
 
         <!-- Note -->
         <div>
             <label for="note" class="block text-sm font-medium text-gray-700">Note</label>
-            <textarea name="note" id="note" rows="2" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('note') }}</textarea>
+            <textarea name="note" id="note" rows="2" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('note') }}</textarea>
         </div>
 
         <!-- Sale Items -->
