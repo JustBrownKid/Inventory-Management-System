@@ -18,7 +18,7 @@ class Product extends Model
     }
     public function salesItems()
     {
-        return $this->belongsToMany(SalesItem::class);
+        return $this->hasMany(SalesItem::class);
     }
     public function purchaesItems()
     {

@@ -1,12 +1,15 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SupplierController;
+
 
 
 Route::get('/', function () {
@@ -94,7 +97,20 @@ Route::delete('/purchases/{id}/delete', [PurchaseController::class, 'destroy'])
 ->name('purchases.delete');
 
 
-
+Route::get('/sales/create', [SalesController::class, 'index'])
+->name('sales');
+Route::get('/sales/list', [SalesController::class, 'list'])
+->name('sales.list');
+Route::get('/sales/{id}/edit', [SalesController::class, 'edit'])
+->name('sales.edit');
+Route::get('/pursaleschases/{id}', [SalesController::class, 'show'])
+->name('sales.show');
+Route::put('/sales/{id}', [SalesController::class, 'update'])
+->name('sales.update');
+Route::post('/sales/store', [SalesController::class, 'store'])
+->name('sales.store');
+Route::delete('/sales/{id}/delete', [SalesController::class, 'destroy'])
+->name('sales.delete');
 
 
 require __DIR__.'/auth.php';

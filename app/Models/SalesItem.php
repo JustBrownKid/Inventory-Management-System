@@ -16,8 +16,8 @@ class SalesItem extends Model
     {
         return $this->belongsTo(Sale::class);
     }
-    public function products()
+    public function product()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

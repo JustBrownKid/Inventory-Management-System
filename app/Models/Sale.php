@@ -11,15 +11,18 @@ class Sale extends Model
 {
     
     protected $fillable = [
-        'customer_id', 'sale_date', 'total_amount', 'note', 'timestamps'
+        'customer_id', 'sale_date', 'total_amount', 'note',
     ];
-    public function  customers()
+
+    // Correct the method name to `customer()` for belongsTo relationship
+    public function customer()
     {
         return $this->belongsTo(Customer::class);
     }
-    public function  salesItems()
+
+    // Relationship with SalesItem (each sale has many sales items)
+    public function items()
     {
         return $this->hasMany(SalesItem::class);
     }
-
 }

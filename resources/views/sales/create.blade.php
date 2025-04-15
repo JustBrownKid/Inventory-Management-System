@@ -1,10 +1,8 @@
 @extends('layouts.master')
 
-@section('title', 'Create Purchase')
+@section('title', 'Create Sale')
 
 @section('content')
-
-
 @if (session('success'))
     <div id="toast" class="fixed top-5 right-5 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg shadow-lg transform transition-all opacity-100">
         <span class="font-medium">Success!</span> {{ session('success') }}
@@ -20,41 +18,44 @@
         }, 5000);
     </script>
 @endif
-<div class="max-w-4xl mx-auto py-8 px-4">
-    <h2 class="text-2xl font-semibold mb-6">Create Purchase</h2>
 
-    <form action="{{ route('purchases.store') }}" method="POST" class="space-y-6">
+<div class="max-w-4xl mx-auto py-8 px-4">
+    <h2 class="text-2xl font-semibold mb-6">Create Sale</h2>
+
+    <form action="{{ route('sales.store') }}" method="POST" class="space-y-6">
         @csrf
 
-        <!-- Supplier -->
+        <!-- Customer -->
         <div class="flex space-x-6">
-    <!-- Supplier -->
+    <!-- Customer -->
     <div class="w-1/2">
-        <label for="supplier_id" class="block text-sm font-medium text-gray-700">Supplier</label>
-        <select name="supplier_id" id="supplier_id" class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
-            <option value="">Select Supplier</option>
-            @foreach($suppliers as $supplier)
-                <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+        <label for="customer_id" class="block text-sm font-medium text-gray-700">Customer</label>
+        <select name="customer_id" id="customer_id" class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+            <option value="">Select Customer</option>
+            @foreach($customers as $customer)
+                <option value="{{ $customer->id }}" {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
+                    {{ $customer->name }}
+                </option>
             @endforeach
         </select>
     </div>
 
-    <!-- Purchase Date -->
+    <!-- Sale Date -->
     <div class="w-1/2">
-        <label for="purchase_date" class="block text-sm font-medium text-gray-700">Purchase Date</label>
-        <input type="date" name="purchase_date" id="purchase_date" class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+        <label for="sale_date" class="block text-sm font-medium text-gray-700">Sale Date</label>
+        <input type="date" name="sale_date" id="sale_date" value="{{ old('sale_date', now()->toDateString()) }}" class="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
     </div>
 </div>
 
         <!-- Note -->
         <div>
             <label for="note" class="block text-sm font-medium text-gray-700">Note</label>
-            <textarea name="note" id="note" rows="2" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+            <textarea name="note" id="note" rows="2" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('note') }}</textarea>
         </div>
 
-        <!-- Products Table -->
+        <!-- Sale Items -->
         <div>
-            <h4 class="text-lg font-medium mb-2">Products</h4>
+            <h4 class="text-lg font-medium mb-2">Sale Items</h4>
             <table class="min-w-full bg-white border border-gray-300 text-sm text-left" id="items-table">
                 <thead>
                     <tr class="bg-gray-100">
@@ -81,17 +82,20 @@
         <!-- Submit -->
         <div class="flex gap-4">
             <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded">
-                Save Purchase
+                Save Sale
             </button>
-            <a href="{{ route('purchases.store') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
+            <a href="{{ route('sales') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
                 Cancel
             </a>
         </div>
     </form>
 </div>
 
-
-
+<template id="product-options-template">
+    @foreach($products as $product)
+        <option value="{{ $product->id }}">{{ $product->name }}</option>
+    @endforeach
+</template>
 
 <script>
     let products = @json($products);
@@ -126,9 +130,9 @@
                 <input type="number" name="items[${itemIndex}][quantity]" class="w-30 h-7 border-gray-300 rounded-md qty" min="1" required>
             </td>
             <td class="border px-4 py-2">
-                <input type="number" name="items[${itemIndex}][unit_price]" class="w-30 h-7  border-gray-300 rounded-md unit-price" min="0" step="" required>
+                <input type="number" name="items[${itemIndex}][unit_price]" class="w-30 h-7 border-gray-300 rounded-md unit-price" min="0" step="0.01" required>
             </td>
-            <td class="border w-full px-4 py-2">
+            <td class="border px-4 py-2">
                 MMK<span class="line-total">0</span>
             </td>
             <td class="border px-4 py-2 text-center">

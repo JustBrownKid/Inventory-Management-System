@@ -17,9 +17,9 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
-            $table->string(' sale_date');
-            $table->string(' total_amount');
-            $table->string(' note');
+            $table->string('sale_date');
+            $table->string('total_amount');
+            $table->string('note');
             $table->timestamps();
         });
     }
