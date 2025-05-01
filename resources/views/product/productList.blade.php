@@ -3,8 +3,8 @@
 @section('title', 'Product List')
 
 @section('content')
-<div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-    <h1 class="text-2xl font-semibold text-gray-800 mb-6">Product List</h1>
+<div class="max-w-7xl py-10 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-">Product List</h1>
 
     @if(session('success'))
         <div id="toast" class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative shadow-md transition-opacity">
@@ -62,7 +62,6 @@
         1: 'bg-blue-100', 2: 'bg-green-100', 3: 'bg-yellow-100', 4: 'bg-red-100',
         5: 'bg-purple-100', 6: 'bg-pink-100', 7: 'bg-indigo-100', 8: 'bg-teal-100',
         9: 'bg-orange-100', 10: 'bg-gray-100'
-        // Add more if needed
     };
 
     const productTableBody = document.getElementById("product-table-body");
@@ -80,23 +79,23 @@
             const categoryColor = categoryColors[product.category_id] || 'bg-gray-100';
 
             row.innerHTML = `
-                <td class="px-6 py-1">${product.name}</td>
-                <td class="px-6 py-1">${product.sku}</td>
-                <td class="px-6 py-1 ${categoryColor} ">${categoryName}</td>
-                <td class="px-6 py-1">${product.price}</td>
-                <td class="px-6 py-1">${product.quantity}</td>
-                <td class="px-6 py-1">${product.description}</td>
-                <td class="px-6 py-1 space-x-2">
+            <td class="px-6  py-1">${product.name}</td>
+            <td class="px-6 py-1">${product.sku}</td>
+            <td class="px-6 py-1 ${categoryColor} ">${categoryName}</td>
+            <td class="px-6 py-1">${product.price}</td>
+            <td class="px-6 py-1">${product.quantity}</td>
+            <td class="px-6 py-1">${product.description}</td>
+            <td class="px-6 w-[12%] py-1 space-x-2">
                     <a href="/products/${product.id}/edit"
-                       class="inline-block px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm">
-                        Edit
+                       class="inline-block px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm">
+                        <i class="fas fa-edit"></i>  <!-- Edit icon -->
                     </a>
                     <form action="/product/${product.id}/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');" class="inline-block">
                         @csrf
                         @method('DELETE')
                         <button type="submit"
-                                class="inline-block px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-sm">
-                            Delete
+                                class="inline-block px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-sm">
+                            <i class="fas fa-trash-alt"></i>  <!-- Delete icon -->
                         </button>
                     </form>
                 </td>
@@ -129,4 +128,8 @@
     searchInput.addEventListener("input", filterData);
     filterSelect.addEventListener("change", filterData);
 </script>
+
+<!-- Font Awesome CDN script, ensure it's placed at the bottom before </body> tag -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 @endsection

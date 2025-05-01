@@ -43,7 +43,7 @@
     function renderTable(filteredData) {
         customerTableBody.innerHTML = '';
         if (filteredData.length === 0) {
-            customerTableBody.innerHTML = `
+            customerTableBody.innerHTML = ` 
                 <tr>
                     <td colspan="5" class="px-6 py-4 text-center text-gray-500">
                         No customers found.
@@ -64,13 +64,13 @@
                 <td class="px-6 py-1 space-x-2">
                     <a href="/customer/${customer.id}/edit"
                        class="inline-block px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm">
-                       Edit
+                        <i class="fas fa-edit"></i> 
                     </a>
                     <form action="/customer/${customer.id}/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this customer?');" class="inline-block">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="inline-block px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-sm">
-                            Delete
+                            <i class="fas fa-trash-alt"></i> 
                         </button>
                     </form>
                 </td>
@@ -93,4 +93,8 @@
     renderTable(customers);
     searchInput.addEventListener("input", filterData);
 </script>
+
+<!-- Font Awesome CDN for Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 @endsection
