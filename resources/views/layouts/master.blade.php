@@ -14,7 +14,7 @@
 
 <body class="bg-gray-100">
   <header class="md:hidden bg-gray-900 text-white flex justify-between items-center p-4">
-    <h1 class="text-lg font-semibold">MyApp</h1>
+    <h1 class="text-lg font-semibold">My APP</h1>
     <button id="toggleSidebar" class="text-white focus:outline-none">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
@@ -79,9 +79,18 @@
         <a href="/sales/list" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">Sales List</a>
         <hr>
     @endif
+    <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <a :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+</a>
+                        </form>
       </nav>
     </div>
-
+    
     <div class="flex-1 overflow-auto">
       @yield('content')
     </div>
